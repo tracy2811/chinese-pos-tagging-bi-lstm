@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+  <h1>Help <span>you</span> tag</h1>
+  <div class="container">
+    <div class="result">
+      {% for item in tokens %}
+        <div class="item tag-{{ item[1] | lower }}">
+          <div class="token">{{ item[0] }}</div>
+          <div class="tag">{{ item[1] }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    <a href='/' class="button">Got it</a>
+  </div>
+{% endblock %}

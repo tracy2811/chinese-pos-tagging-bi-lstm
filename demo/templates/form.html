@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Help <span>me</span> tag</h1>
+  <form method="post" class="container">
+    <input
+      type="text"
+      name="sentence"
+      id="sent"
+      required
+      placeholder="Enter simplified Chinese sentence"
+    />
+    <button type="submit">Enter</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+html, body {
+  font-size: 10px;
+  width: 100%;
+  background-color: #6D9886;
+  color: #F6F6F6;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4rem;
+  margin-top: 20vh;
+  margin-bottom: 1em;
+  animation: 2s slidein;
+}
+
+h1 > span, a {
+  color: #D9CAB3;
+  text-shadow: 0 0 0.8em #212121;
+}
+
+footer {
+  font-size: 1.6rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 1em;
+  text-align: center;
+}
+
+main {
+  width: 80vw;
+  max-width: 1000px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  transition: opacity 1s, transform 1s;
+  opacity: 1;
+  animation: 1s slidein;
+}
+
+.result {
+  font-size: 3.6rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.item {
+  text-align: center;
+  margin: 0.5em 0.5em;
+}
+
+.token {
+  margin: auto;
+  border-bottom: 1px solid #212121;
+  font-weight: bold;
+}
+
+.tag {
+  font-size: 1.8rem;
+  margin-top: 0.5em;
+}
+
+.tag-verb {
+  color: #F6F6F6;
+}
+
+.tag-noun {
+  color: #B91646;
+}
+
+.tag-adj {
+  color: #3F3351;
+}
+
+.tag-adv {
+  color: #864879;
+}
+
+.tag-pron {
+  color: #F0A500;
+}
+
+.tag-det {
+  color: #125C13;
+}
+
+.tag-punct {
+  color: #ADC2A9;
+}
+
+.tag-num {
+  color: #D1E8E4;
+}
+
+.tag-aux {
+  color: #664E88;
+}
+
+.tag-cconj {
+  color: #E5DCC3;
+}
+
+.tag-pront {
+  color: #C89595;
+}
+
+.tag-x {
+  color: #14279B;
+}
+
+.tag-sym {
+  color: #AB6D23;
+}
+
+.tag-part {
+  color: #1DB9C3;
+}
+
+.tag-adp {
+  color: #90AACB;
+}
+
+input, input:focus {
+  text-align: center;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #212121;
+  font-size: 3rem;
+  color: #F6F6F6;
+  background: none;
+  padding-bottom: 0.2em;
+}
+
+input:focus {
+  border-bottom: 1px solid #F6F6F6;
+}
+
+button, .button {
+  width: max-content;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 2em;
+  padding: 0.5em 1.5em;
+  background-color: #F6F6F6;
+  border: none;
+  color: #6D9886;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: font-size 0.2s;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+button:hover, .button:hover {
+  color: #D9CAB3;
+  font-size: 2.4rem;
+  box-shadow: 0px 0px 10px #D9CAB3
+}
+
+/* Animation */
+
+@keyframes slidein {
+  from {
+    margin-right: 70%;
+    opacity: 0.3;
+  }
+  to {
+    margin-right: 0%;
+    opacity: 1;
+  }
+}
