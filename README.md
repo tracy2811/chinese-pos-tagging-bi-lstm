@@ -12,29 +12,30 @@
 
 [UD_Chinese-GSDSimp](https://github.com/UniversalDependencies/UD_Chinese-GSDSimp/tree/master) dataset from [Universal Dependencies](https://universaldependencies.org
 
-| | Train | Test | Total
---- | --- | --- | ---
-#Sentences | 3997 | 500 | 4997
+|            | Train | Test | Total |
+| ---------- | ----- | ---- | ----- |
+| #Sentences | 3997  | 500  | 4997  |
 
-POS tag | Meaning | Class
---- | --- | ---
-ADJ | Adjective | Open
-ADV | Adverb | Open
-NOUN | Noun | Open
-PROPN | Pronoun | Open
-VERB | Verb | Open
-ADP | Adposition | Closed
-AUX | Auxiliary | Closed
-CCONJ | Coordinating conjunction | Closed
-DET | Determiner | Closed
-NUM | Numeral | Closed
-PART | Particle | Closed
-PRON | Pronoun | Closed
-PUNCT | Punctuation | Other
-SYM | Symbol | Other
-X | Other | Other
+| POS tag | Meaning                  | Class  |
+| ------- | ------------------------ | ------ |
+| ADJ     | Adjective                | Open   |
+| ADV     | Adverb                   | Open   |
+| NOUN    | Noun                     | Open   |
+| PROPN   | Pronoun                  | Open   |
+| VERB    | Verb                     | Open   |
+| ADP     | Adposition               | Closed |
+| AUX     | Auxiliary                | Closed |
+| CCONJ   | Coordinating conjunction | Closed |
+| DET     | Determiner               | Closed |
+| NUM     | Numeral                  | Closed |
+| PART    | Particle                 | Closed |
+| PRON    | Pronoun                  | Closed |
+| PUNCT   | Punctuation              | Other  |
+| SYM     | Symbol                   | Other  |
+| X       | Other                    | Other  |
 
 Example data:
+
 ```
 # sent_id = test-s1
 # text = 然而，这样的处理也衍生了一些问题。
@@ -51,7 +52,8 @@ Example data:
 11	。	。	PUNCT	.	_	7	punct	_	SpaceAfter=No
 ```
 
-----
+---
+
 ## Pre-processing
 
 Mapping: token - index, POS tag - index
@@ -66,20 +68,22 @@ One token is one character. New tag `NC` is introduced to indicate that this cha
 
 ![Sample sentence](./report/sample-sentence.png)
 
-----
+---
+
 ## Models
 
 3 models:
-  * POS-tag-only: LSTM, Bi-LSTM
-  * WS and POS-tag: joint Bi-LSTM
+
+- POS-tag-only: LSTM, Bi-LSTM
+- WS and POS-tag: joint Bi-LSTM
 
 Each has 3 layers:
 
-  1. Embedding
+1. Embedding
 
-  1. LSTM (bidirectional or not)
+1. LSTM (bidirectional or not)
 
-  1. Linear
+1. Linear
 
 Summary for the Bi-LSTM model. The Embedding dimension `EMBEDDING_DIM` and hidden dimension `HIDDEN_DIM` are set to 64.
 
@@ -91,22 +95,23 @@ BiLSTMTagger(
 )
 ```
 
-----
+---
+
 ## Train and Test Results
 
-* Loss: negative log likelihood loss `NLLLoss`
+- Loss: negative log likelihood loss `NLLLoss`
 
-* Optimizer: stochastic gradient descent `SGD` 
+- Optimizer: stochastic gradient descent `SGD`
 
-* Metric: F1 score
+- Metric: F1 score
 
-* Number of epochs: 10
+- Number of epochs: 10
 
-Model | F1 avg | F1
---- | --- | ---
-LSTM | 0.7933 | 0.7930
-Bi-LSTM | 0.8185 | 0.8140
-Joint Bi-LSTM | 0.8461 | 0.8471
+| Model         | F1 avg | F1     |
+| ------------- | ------ | ------ |
+| LSTM          | 0.7933 | 0.7930 |
+| Bi-LSTM       | 0.8185 | 0.8140 |
+| Joint Bi-LSTM | 0.8461 | 0.8471 |
 
 LSTM train and test loss
 ![LSTM train and test loss](./report/LSTM_Loss.svg)
@@ -118,6 +123,7 @@ Joint Bi-LSTM train and test loss
 ![Joint Bi-LSTM train and test loss](./report/JointBiLSTM_Loss.svg)
 
 Joint Bi-LSTM prediction example:
+
 ```
 由于认为德义军队战力已就绪，隆美尔决定再发动攻势。
 ['ADP', 'NC', 'VERB', 'NC', 'PROPN', 'PROPN', 'NOUN', 'NC', 'NOUN', 'NC', 'ADV', 'VERB', 'NC', 'PUNCT', 'PROPN', 'NC', 'NC', 'VERB', 'NC', 'ADV', 'VERB', 'NC', 'NOUN', 'NC', 'PUNCT']
@@ -125,7 +131,7 @@ Joint Bi-LSTM prediction example:
 0.916952380952381
 ```
 
-----
+---
 
 ## Web Demo
 
@@ -133,17 +139,16 @@ Joint Bi-LSTM + Flask
 
 Installation:
 
-  1. Make sure Python 3 is installed. Download this repo, then go inside demo folder.
+1. Make sure Python 3 is installed. Download this repo, then go inside demo folder.
 
-  1. Install packages and start server
+1. Install packages and start server
 
-      ```
-      pip install -r requirements.txt
-      flask run
-      ```
+   ```
+   pip install -r requirements.txt
+   flask run
+   ```
 
-  1. Go to [localhost:5000](localhost:5000)
-
+1. Go to [localhost:5000](localhost:5000)
 
 Input screenshot
 ![Input screenshot](./report/demo-input.png)
@@ -151,8 +156,9 @@ Input screenshot
 Result screenshot
 ![Result screenshot](./report/demo-result.png)
 
-----
+---
+
 ## References
 
-* [Kaggle note book: LSTM (character + word) POS-tag model PyTorch ](https://www.kaggle.com/krishanudb/lstm-character-word-pos-tag-model-pytorch)
-* [Joint Khmer Word Segmentation and POS Tagging](https://towardsdatascience.com/joint-khmer-word-segmentation-and-pos-tagging-cad650e78d30)
+- [Kaggle note book: LSTM (character + word) POS-tag model PyTorch ](https://www.kaggle.com/krishanudb/lstm-character-word-pos-tag-model-pytorch)
+- [Joint Khmer Word Segmentation and POS Tagging](https://towardsdatascience.com/joint-khmer-word-segmentation-and-pos-tagging-cad650e78d30)
